@@ -1,0 +1,32 @@
+// tells prisma what we will using for database connection
+datasource db {
+  provider = "sqlite"
+  url = "file:./dev.db"
+}
+
+// indicates that we want to generate prisma client
+generator client {
+  provider = "prisma-client-js"
+}
+
+// create structure model or table user
+model User {
+  id          Int         @id @default(autoincrement())
+  firstName   String
+  lastName    String
+  email       String      @unique
+  password    String
+  blogs       Blog[]
+  createdAt   DateTime    @default(now())
+
+}
+
+// create structure model or table blog
+model Blog {
+  id            Int       @id @default(autoincrement())
+  title         String
+  description   String
+  postedBy      User?     @relation(fields: [postedById], references: [id])
+  postedById    Int?
+  createdAt     DateTime  @default(now())
+}

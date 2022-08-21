@@ -1,29 +1,73 @@
-# nodejs-server-graphql
+## nodejs-server-graphql
 
-## Depp or Lib I use
-- express
+### Depp or Lib I use
+
 - nodemon
-- express-graphql
 - graphql
-- cors
+- apollo-server
+- prisma
+- @prisma/client
 
-## How to use
+### How to use
+
 - clone this repo
+
 ```
   git clone git@github.com:Dwipasca/nodejs-server-graphql.git
 ```
+
 - go to the project directory
+
 ```
   cd nodejs-server-graphql
 ```
-- install depp 
+
+- install depp
+
 ```
   npm i | npm install
 ```
+
+- migrate database sqlite with prisma
+
+```
+  npx prisma migrate dev
+```
+
+- name your migrate, you can name it as "init" for the first time you clone this project
+
+- generate prisma client
+
+```
+  npx prisma generate
+```
+
 - run project
+
 ```
   npm run dev
 ```
+
+- run prisma studio (optional) (show database)
+
+```
+  npx prisma studio
+```
+
 - open in your browser with url http://localhost:4000/graphql
 
-<img width="1196" alt="Screen Shot 2022-07-29 at 20 49 41" src="https://user-images.githubusercontent.com/19584291/181764169-2a06e5df-3ff2-41b3-bcee-7dd38bc62e9d.png">
+### Manipulation file schema.prisma
+
+- after you add some model in file schema.prisma run this command
+
+```
+  npx prisma migrate dev --name "[name aaction model]"
+  // for example
+  npx prisma migrate dev --name "add-blog-model"
+```
+
+- re-generate prisma client
+
+```
+  npx migrate generate
+```

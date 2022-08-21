@@ -1,0 +1,29 @@
+type Query {
+  getAllUsers: [User]
+}
+
+type Mutation {
+  createUser(
+    firstName: String!
+    lastName: String!
+    email: String!
+    password: String!
+  ): User!
+}
+
+"User adalah kumpulan data diri dari user itu sendiri"
+type User {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  blogs: [Blog!]
+}
+
+type Blog {
+  id: ID!
+  title: String!
+  description: String!
+  postedBy: User
+}
